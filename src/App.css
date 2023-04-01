@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+}
+
+.header {
+  height: 250px;
+  width: 100%;
+  background-color: #e7edf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.taskContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cardTodo {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 15px;
+  border: 1px solid #e7edf49a;
+  border-radius: 8px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.todoContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+
+/*  Login Page  */
+
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #6a62d2;
+}
+
+.login__container {
+  width: 550px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.login__container h2{
+  text-align: center;
+}
+
+.login__container input {
+  padding: 1rem;
+  background-color: #e5e8ed;
+  border: none;
+  outline: none;
+}
+
+.login__container button{
+  padding: 1rem;
+  background-color: #6a62d2;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  outline: none;
+  border: none;
+}
+.login__container button:hover{
+  background-color: #6a62d2f5;
+}
+.link{
+  text-decoration: none;
+  color: #6a62d2;
+}
