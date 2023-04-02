@@ -2,8 +2,12 @@ import { DatePicker } from 'antd';
 import { useEffect, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label, Collapse } from 'reactstrap';
 import Collaps from '../collapse/Collaps';
+import axios from 'axios';
 
-const EditTask = ({ modal, isToggle, editTask, taskObject }) => {
+const EditTask = ({ modal, isToggle, taskObject }) => {
+
+    const todo = JSON.parse(localStorage.getItem('todo'));
+
 
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
@@ -21,15 +25,6 @@ const EditTask = ({ modal, isToggle, editTask, taskObject }) => {
         setDate(dateString)
     }
 
-    const handelSave = (e) => {
-        e.preventDefault()
-        const taskObject = {
-            title: taskName,
-            description: description,
-            endDate: date
-        }
-
-    }
 
     useEffect(() => {
         setTaskName(taskObject.title)
@@ -38,6 +33,28 @@ const EditTask = ({ modal, isToggle, editTask, taskObject }) => {
 
     }, [])
 
+    const updateTodo = async (id) => {
+        console.log(id)
+        const updatedTaskObject = {
+            title: taskName,
+            description: description,
+            endDate: date
+        }
+        try {
+            const res = await axios.patch(`http://localhost:3001/todos/${id}`, updatedTaskObject)
+            const indexToUpdate = todo.findIndex(todo => todo.id === id);
+
+            if (indexToUpdate !== -1) {
+                todo[indexToUpdate] = updatedTaskObject;
+            }
+            localStorage.setItem('todo', JSON.stringify(todo))
+            console.log(todo)
+            isToggle(false)
+            console.log(res.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
     return (
@@ -78,7 +95,7 @@ const EditTask = ({ modal, isToggle, editTask, taskObject }) => {
 
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={handelSave}>
+                    <Button color="primary" onClick={() => updateTodo(taskObject.id)}>
                         Edit
                     </Button>{' '}
                     <Button color="secondary" onClick={isToggle}>

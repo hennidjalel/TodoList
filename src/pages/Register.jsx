@@ -1,9 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
-
+import { motion } from 'framer-motion';
 
 const Register = () => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    useEffect(() => {
+        if (user) return navigate('/')
+    }, [])
+
 
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
@@ -27,8 +32,12 @@ const Register = () => {
     }
 
     return (
-        <div className='login' >
-            <div className='login__container'>
+        <div className='login'>
+            <motion.div className='login__container'
+                initial={{ opacity: 0, scale: 0.75 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+            >
                 <h2>CREATE ACCOUNT</h2>
                 <form className='d-flex flex-column gap-4' onSubmit={handleSubmit}>
                     <input
@@ -42,7 +51,7 @@ const Register = () => {
                     <button type='submit'>SIGN UP</button>
                 </form>
                 <Link to="/login" className='link'>Do you have account ?</Link>
-            </div>
+            </motion.div>
         </div>
     )
 }

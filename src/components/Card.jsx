@@ -4,7 +4,6 @@ import { AiTwotoneEdit } from 'react-icons/ai'
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import { CardBody, Collapse } from 'reactstrap'
 import EditTask from '../modals/EditTask'
-import axios from 'axios'
 
 const Card = ({ taskObject, index, handelDelete }) => {
     const [checked, setChecked] = useState(true);
@@ -13,11 +12,6 @@ const Card = ({ taskObject, index, handelDelete }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
-
-
-
-
-
 
     return (
         <div style={{ display: "flex", alignItems: "center", justifyContent: 'center' }}>
@@ -45,7 +39,7 @@ const Card = ({ taskObject, index, handelDelete }) => {
                 </Collapse>
             </div>
 
-            <EditTask modal={modal} isToggle={isToggle} taskObject={taskObject} />
+            <EditTask modal={modal} isToggle={isToggle} taskObject={taskObject}  />
         </div>
     )
 }

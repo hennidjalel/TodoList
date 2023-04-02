@@ -91,14 +91,14 @@ const CreateTask = ({ modal, toggle, tasks }) => {
 
                             />
                         </span>
-                        <Checkbox
+                        {/* <Checkbox
                             onChange={handelChange}
                             name="completed"
                             checked={checked}
                             onClick={toggleChecked}
                         >
                             Completed
-                        </Checkbox>
+                        </Checkbox> */}
                         <Collaps />
                     </Form>
 
